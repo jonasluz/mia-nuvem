@@ -21,22 +21,23 @@ public class AwsTest : MonoBehaviour
         Print("===========================================");
 
         // Print the number of Amazon EC2 instances.
-        IAmazonEC2 ec2 = AwsManager.Ec2;
         try
         {
-            DescribeInstancesRequest ec2Request = new DescribeInstancesRequest();
-            DescribeInstancesResponse ec2Response = ec2.DescribeInstances(ec2Request);
-            int numInstances = 0;
-            numInstances = ec2Response.Reservations.Count;
-            /*
-            Print(string.Format("You have {0} Amazon EC2 instance(s) running in the {1} region.",
-                                        numInstances, ConfigurationManager.AppSettings["AWSRegion"]));
-            */
-            foreach(Reservation ec2Reservation in ec2Response.Reservations)
-                foreach (Instance ec2Instance in ec2Reservation.Instances)
-                {
-                    Print(ec2Instance.KeyName);
-                }
+            foreach (Instance ec2Instance in AwsManager.Aws.GetInstances())
+            {
+                Print(
+                    "Instance #{0}: {1} - Type: {2} - Monitoring? {3} - {4} - Public DNS: {5} ({6}) - Since: {7} - Security Groups: {8}"
+                    , ec2Instance.InstanceId        // 0
+                    , ec2Instance.KeyName           // 1
+                    , ec2Instance.InstanceType      // 2
+                    , ec2Instance.Monitoring.State  // 3
+                    , ec2Instance.State.Name        // 4
+                    , ec2Instance.PublicDnsName     // 5
+                    , ec2Instance.PublicIpAddress   // 6
+                    , ec2Instance.LaunchTime        // 7
+                    , string.Join(",", ec2Instance.SecurityGroups.ConvertAll(g => g.GroupName).ToArray()) // 8
+                );
+            }
         }
         catch (AmazonEC2Exception ex)
         {
@@ -44,9 +45,15 @@ public class AwsTest : MonoBehaviour
         }
     }
 
+    #region Printing
+    private void Print(string format, params object[] data)
+    {
+        Print(string.Format(format, data));
+    }
     private void Print(string msg)
     {
         if (output) output.text += msg + "\n";
         if (outputToConsole) Debug.Log(msg);
     }
+    #endregion Printing
 }
