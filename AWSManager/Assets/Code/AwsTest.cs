@@ -21,7 +21,7 @@ public class AwsTest : MonoBehaviour
         Print("===========================================");
 
         // Print the number of Amazon EC2 instances.
-        IAmazonEC2 ec2 = new AmazonEC2Client(AwsEnv.Credentials, AwsEnv.Config);
+        IAmazonEC2 ec2 = AwsManager.Ec2;
         try
         {
             DescribeInstancesRequest ec2Request = new DescribeInstancesRequest();
