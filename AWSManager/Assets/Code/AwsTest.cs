@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+
+using UnityEngine;
 using UnityEngine.UI;
 
 using Amazon.EC2;
@@ -11,18 +13,25 @@ public class AwsTest : MonoBehaviour
 
     void Start()
     {
-        GetServiceOutput();
+        ListInstances();
+        //RunNewInstance();
     }
 
-    private void GetServiceOutput()
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Q))
+            Application.Quit();
+    }
+
+    private void ListInstances()
     {
         Print("===========================================");
         Print("Welcome to the AWS .NET SDK!");
         Print("===========================================");
 
-        // Print the number of Amazon EC2 instances.
         try
         {
+            // Imprime dados das instâncias.
             foreach (Instance ec2Instance in AwsManager.Aws.GetInstances())
             {
                 Print(
@@ -38,10 +47,30 @@ public class AwsTest : MonoBehaviour
                     , string.Join(",", ec2Instance.SecurityGroups.ConvertAll(g => g.GroupName).ToArray()) // 8
                 );
             }
+
         }
-        catch (AmazonEC2Exception ex)
+        catch (AwsException ex)
         {
-            Print(new AwsException(ex).ToString());
+            Print(ex.ToString());
+        }
+    }
+
+    private void RunNewInstance()
+    {
+        try
+        {
+            // Executa uma instância nova.
+            Print("Running a new instance...");
+            IDictionary<string, string> response = AwsManager.Aws.RunInstance();
+            if (response != null)
+                foreach (string key in response.Keys)
+                {
+                    Print("{0} - {1}", key, response[key]);
+                }
+        }
+        catch (AwsException ex)
+        {
+            Print(ex.ToString());
         }
     }
 

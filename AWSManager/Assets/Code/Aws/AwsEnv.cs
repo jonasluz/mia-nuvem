@@ -13,6 +13,11 @@ public class AwsEnv : MonoBehaviour {
     // Singleton
     AwsEnv instance;
 
+    public static readonly string DEFAULT_AMI_ID = "ami-eed9a5f9";
+    public static readonly string DEFAULT_INST_TYPE = "t2.micro";
+    public static readonly string DEFAULT_KEY_NAME = "JALJ_AWS_MIA-1";
+    public static readonly string DEFAULT_SECURITY_GROUP = "default";
+
     public static AWSCredentials Credentials
     {
         get; private set;
@@ -32,7 +37,8 @@ public class AwsEnv : MonoBehaviour {
 	void Start ()
     {
         // Evitar erro de certificado no Mono.NET
-        ServicePointManager.ServerCertificateValidationCallback = MonoCertificateFix.MyRemoteCertificateValidationCallback;
+        ServicePointManager.ServerCertificateValidationCallback = 
+            MonoCertificateFix.MyRemoteCertificateValidationCallback;
 
         // Ler o profile a partir de arquivo de configuração externo.
         ReadProfileData();
