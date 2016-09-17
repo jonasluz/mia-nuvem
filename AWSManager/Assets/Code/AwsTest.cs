@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-using System.Net;
-using System.IO;
-using System.Text;
-using System.Configuration;
-using System.Collections;
-
-using Amazon.Runtime;
-using Amazon.Util;
 using Amazon.EC2;
 using Amazon.EC2.Model;
 
 public class AwsTest : MonoBehaviour
 {
+    public Text output;
+    public bool outputToConsole = true;
+
     void Start()
     {
         GetServiceOutput();
@@ -20,9 +16,9 @@ public class AwsTest : MonoBehaviour
 
     private void GetServiceOutput()
     {
-        Debug.Log("===========================================");
-        Debug.Log("Welcome to the AWS .NET SDK!");
-        Debug.Log("===========================================");
+        Print("===========================================");
+        Print("Welcome to the AWS .NET SDK!");
+        Print("===========================================");
 
         // Print the number of Amazon EC2 instances.
         IAmazonEC2 ec2 = new AmazonEC2Client(AwsEnv.Credentials, AwsEnv.Config);
@@ -33,30 +29,36 @@ public class AwsTest : MonoBehaviour
             int numInstances = 0;
             numInstances = ec2Response.Reservations.Count;
             /*
-            Debug.Log(string.Format("You have {0} Amazon EC2 instance(s) running in the {1} region.",
+            Print(string.Format("You have {0} Amazon EC2 instance(s) running in the {1} region.",
                                         numInstances, ConfigurationManager.AppSettings["AWSRegion"]));
             */
             foreach(Reservation ec2Reservation in ec2Response.Reservations)
                 foreach (Instance ec2Instance in ec2Reservation.Instances)
                 {
-                    Debug.Log(ec2Instance.KeyName);
+                    Print(ec2Instance.KeyName);
                 }
         }
         catch (AmazonEC2Exception ex)
         {
             if (ex.ErrorCode != null && ex.ErrorCode.Equals("AuthFailure"))
             {
-                Debug.Log("The account you are using is not signed up for Amazon EC2.");
-                Debug.Log("You can sign up for Amazon EC2 at http://aws.amazon.com/ec2");
+                Print("The account you are using is not signed up for Amazon EC2.");
+                Print("You can sign up for Amazon EC2 at http://aws.amazon.com/ec2");
             }
             else
             {
-                Debug.Log("Caught Exception: " + ex.Message);
-                Debug.Log("Response Status Code: " + ex.StatusCode);
-                Debug.Log("Error Code: " + ex.ErrorCode);
-                Debug.Log("Error Type: " + ex.ErrorType);
-                Debug.Log("Request ID: " + ex.RequestId);
+                Print("Caught Exception: " + ex.Message);
+                Print("Response Status Code: " + ex.StatusCode);
+                Print("Error Code: " + ex.ErrorCode);
+                Print("Error Type: " + ex.ErrorType);
+                Print("Request ID: " + ex.RequestId);
             }
         }
+    }
+
+    private void Print(string msg)
+    {
+        if (output) output.text += msg + "\n";
+        if (outputToConsole) Debug.Log(msg);
     }
 }
