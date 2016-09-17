@@ -40,19 +40,7 @@ public class AwsTest : MonoBehaviour
         }
         catch (AmazonEC2Exception ex)
         {
-            if (ex.ErrorCode != null && ex.ErrorCode.Equals("AuthFailure"))
-            {
-                Print("The account you are using is not signed up for Amazon EC2.");
-                Print("You can sign up for Amazon EC2 at http://aws.amazon.com/ec2");
-            }
-            else
-            {
-                Print("Caught Exception: " + ex.Message);
-                Print("Response Status Code: " + ex.StatusCode);
-                Print("Error Code: " + ex.ErrorCode);
-                Print("Error Type: " + ex.ErrorType);
-                Print("Request ID: " + ex.RequestId);
-            }
+            Print(new AwsException(ex).ToString());
         }
     }
 

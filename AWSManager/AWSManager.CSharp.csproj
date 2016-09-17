@@ -69,10 +69,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Code\AwsEnv.cs" />
-    <Compile Include="Assets\Code\AwsManager.cs" />
+    <Compile Include="Assets\Code\Aws\AwsEnv.cs" />
+    <Compile Include="Assets\Code\Aws\AwsException.cs" />
+    <Compile Include="Assets\Code\Aws\AwsManager.cs" />
     <Compile Include="Assets\Code\AwsTest.cs" />
-    <Compile Include="Assets\Code\MonoCertificateFix.cs" />
+    <Compile Include="Assets\Code\Util\MonoCertificateFix.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
