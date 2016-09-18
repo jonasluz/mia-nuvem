@@ -18,7 +18,7 @@ public class ErrorController : MonoBehaviour {
     void Awake()
     {
         // Singleton.
-        if (EC = null) EC = this;
+        if (EC == null) EC = this;
         else Destroy(this);
     }
 
