@@ -96,6 +96,7 @@
     <Compile Include="Assets\Code\View\ButtonTerminateInstance.cs" />
     <Compile Include="Assets\Code\View\ButtonUpdateInstances.cs" />
     <Compile Include="Assets\Code\View\CameraBillboard.cs" />
+    <Compile Include="Assets\Code\View\PanelActivator.cs" />
     <Compile Include="Assets\Code\View\RotatingClouds.cs" />
   </ItemGroup>
   <ItemGroup>
