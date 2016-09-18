@@ -18,7 +18,7 @@ public class AwsTest : MonoBehaviour
 
     void Start()
     {
-        //ListImages();
+        ListImages();
 
         //RunNewInstance();
         //SpecifiedOperation(Operation.TERMINATE, "i-0591fc0197943a566");

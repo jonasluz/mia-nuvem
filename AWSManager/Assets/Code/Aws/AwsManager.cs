@@ -69,6 +69,7 @@ public class AwsManager : MonoBehaviour {
         try
         {
             DescribeImagesRequest ec2Request = new DescribeImagesRequest();
+            ec2Request.Owners.Add("self");
             DescribeImagesResponse ec2Response = Ec2.DescribeImages(ec2Request);
 
             foreach (Image ec2Image in ec2Response.Images)
