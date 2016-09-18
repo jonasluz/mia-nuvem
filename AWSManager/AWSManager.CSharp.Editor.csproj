@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{427C3597-5CDC-D325-9B10-D38E1052F67F}</ProjectGuid>
+    <ProjectGuid>{BE98BC49-0DB6-F9E9-ED9C-567B4D0536B7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.4.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -52,14 +52,56 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.EditorTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.EditorTestsRunner.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SamsungTV.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.SamsungTV.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.LinuxStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.OSXStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK.Core">
       <HintPath>Assets\AWSSDK-3.5\AWSSDK.Core.dll</HintPath>
@@ -73,30 +115,14 @@
       <Project>{3D22A3BB-34D8-0E5E-ED15-FAC4278C5F9D}</Project>
       <Name>AWSManager.CSharp.Plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="AWSManager.CSharp.csproj">
+      <Project>{427C3597-5CDC-D325-9B10-D38E1052F67F}</Project>
+      <Name>AWSManager.CSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Asset Store\PowerUp\Scripts\CustomizablePowerUp.cs" />
-    <Compile Include="Assets\Asset Store\PowerUp\Scripts\PowerUpManager.cs" />
-    <Compile Include="Assets\Asset Store\PowerUp\Scripts\PowerUpRotation.cs" />
-    <Compile Include="Assets\Asset Store\PowerUp\Scripts\ScaleParticles.cs" />
-    <Compile Include="Assets\Asset Store\PowerUp\Scripts\TakeablePowerUp.cs" />
-    <Compile Include="Assets\Asset Store\PowerUp\Scripts\Utility\Singleton.cs" />
-    <Compile Include="Assets\Code\App\ErrorController.cs" />
-    <Compile Include="Assets\Code\Aws\AwsEnv.cs" />
-    <Compile Include="Assets\Code\Aws\AwsException.cs" />
-    <Compile Include="Assets\Code\Aws\AwsManager.cs" />
-    <Compile Include="Assets\Code\Tests\AwsTest.cs" />
-    <Compile Include="Assets\Code\Util\MonoCertificateFix.cs" />
-    <Compile Include="Assets\Code\View\AbstractButtonSphere.cs" />
-    <Compile Include="Assets\Code\View\AwsInstanceView.cs" />
-    <Compile Include="Assets\Code\View\AwsView.cs" />
-    <Compile Include="Assets\Code\View\ButtonNewInstance.cs" />
-    <Compile Include="Assets\Code\View\ButtonStartInstance.cs" />
-    <Compile Include="Assets\Code\View\ButtonStopInstance.cs" />
-    <Compile Include="Assets\Code\View\ButtonTerminateInstance.cs" />
-    <Compile Include="Assets\Code\View\ButtonUpdateInstances.cs" />
-    <Compile Include="Assets\Code\View\CameraBillboard.cs" />
-    <Compile Include="Assets\Code\View\RotatingClouds.cs" />
+    <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\Editor\FindMissingScriptsRecursively.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Asset Store\Allsky\AllSkyDemoEnvironment\Specular Snow Vertex Colours.shader" />
