@@ -1,26 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider))]
 public abstract class AbstractButtonSphere : MonoBehaviour
 {
-    protected static AwsView m_controller;
+    public Collider detectionCollider;
 
-    protected Collider m_collider;
+    protected static AwsView m_controller;
 
     protected virtual void Awake()
     {
-        m_collider = GetComponentInChildren<Collider>();
+        if (!detectionCollider) detectionCollider = GetComponentInChildren<Collider>();
         if (!m_controller) m_controller = GameObject.FindObjectOfType<AwsView>();
     }
 
     protected void Update()
     {
-        if (m_collider && Input.GetMouseButtonDown(0))
+        if (detectionCollider && Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (m_collider.Raycast(ray, out hit, 1000f))
+            if (detectionCollider.Raycast(ray, out hit, 1000f))
                 Execute();
         }
     }
