@@ -12,19 +12,20 @@ public class PanelActivator : AbstractButtonSphere {
     {
         if (panel)
         {
-            Animator animtr = panel.GetComponent<Animator>();
+            Animator animator = panel.GetComponent<Animator>();
+            if (!animator) animator = GetComponent<Animator>();
 
             if (panel.activeSelf)
             {
                 cancelClosing = false;
-                if (animtr) animtr.SetTrigger("Hide");
-                StartCoroutine("WaitAnimationAndInactive", animtr);
+                if (animator) animator.SetTrigger("Hide");
+                StartCoroutine("WaitAnimationAndInactive", animator);
             }
             else
             {
                 cancelClosing = true;
                 panel.SetActive(true);
-                if (animtr) animtr.SetTrigger("Show");
+                if (animator) animator.SetTrigger("Show");
             }
         }
     }
