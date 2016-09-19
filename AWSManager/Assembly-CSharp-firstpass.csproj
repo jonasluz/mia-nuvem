@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{7D8ECC96-9514-248D-5C00-516247D4AE44}</ProjectGuid>
+    <ProjectGuid>{EC972255-4D25-B1C9-C34D-B1E0444D9E5E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -45,30 +45,49 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Asset Store\PowerUp\Scripts\CustomizablePowerUp.cs" />
-     <Compile Include="Assets\Asset Store\PowerUp\Scripts\PowerUpManager.cs" />
-     <Compile Include="Assets\Asset Store\PowerUp\Scripts\PowerUpRotation.cs" />
-     <Compile Include="Assets\Asset Store\PowerUp\Scripts\ScaleParticles.cs" />
-     <Compile Include="Assets\Asset Store\PowerUp\Scripts\TakeablePowerUp.cs" />
-     <Compile Include="Assets\Asset Store\PowerUp\Scripts\Utility\Singleton.cs" />
-     <Compile Include="Assets\Code\App\ErrorController.cs" />
-     <Compile Include="Assets\Code\Aws\AwsEnv.cs" />
-     <Compile Include="Assets\Code\Aws\AwsException.cs" />
-     <Compile Include="Assets\Code\Aws\AwsManager.cs" />
-     <Compile Include="Assets\Code\Tests\AwsTest.cs" />
-     <Compile Include="Assets\Code\Util\MonoCertificateFix.cs" />
-     <Compile Include="Assets\Code\View\AbstractButtonSphere.cs" />
-     <Compile Include="Assets\Code\View\AwsInstanceView.cs" />
-     <Compile Include="Assets\Code\View\AwsView.cs" />
-     <Compile Include="Assets\Code\View\ButtonNewInstance.cs" />
-     <Compile Include="Assets\Code\View\ButtonStartInstance.cs" />
-     <Compile Include="Assets\Code\View\ButtonStopInstance.cs" />
-     <Compile Include="Assets\Code\View\ButtonTerminateInstance.cs" />
-     <Compile Include="Assets\Code\View\ButtonUpdateInstances.cs" />
-     <Compile Include="Assets\Code\View\CameraBillboard.cs" />
-     <Compile Include="Assets\Code\View\CloudMaterialAnim.cs" />
-     <Compile Include="Assets\Code\View\PanelActivator.cs" />
-     <Compile Include="Assets\Code\View\RotatingClouds.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\FreeLookCam.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\HandHeldCam.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\PivotBasedCameraRig.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
+     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\ActivateTrigger.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\AlphaButtonClickMask.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\AutoMobileShaderSwitch.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\AutoMoveAndRotate.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\CameraRefocus.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\CurveControlledBob.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\DragRigidbody.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\DynamicShadowSettings.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\EventSystemChecker.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\FOVKick.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\FPSCounter.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\FollowTarget.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\ForcedReset.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\LerpControlledBob.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\ObjectResetter.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\ParticleSystemDestroyer.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\PlatformSpecificContent.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\SimpleActivatorMenu.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\SimpleMouseRotator.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\SmoothFollow.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\TimedObjectActivator.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\TimedObjectDestructor.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\WaypointCircuit.cs" />
+     <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Resources\credentials_template.txt" />
      <None Include="Assets\Asset Store\Allsky\AllSkyDemoEnvironment\Specular Snow Vertex Colours.shader" />
@@ -89,10 +108,6 @@
  <Reference Include="AWSSDK.EC2">
  <HintPath>C:/Users/jonas/JONAS/MIA/mia-nuvem/AWSManager/Assets/AWSSDK-3.5/AWSSDK.EC2.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{EC972255-4D25-B1C9-C34D-B1E0444D9E5E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

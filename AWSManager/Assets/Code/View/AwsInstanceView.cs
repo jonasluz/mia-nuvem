@@ -34,7 +34,7 @@ public class AwsInstanceView : MonoBehaviour
     void Awake()
     {
         if (!cloudsRotator) cloudsRotator = GetComponentInParent<RotatingClouds>();
-        if (cloudCollider) m_material = cloudCollider.gameObject.GetComponent<MeshRenderer>().sharedMaterial;
+        if (cloudCollider) m_material = cloudCollider.gameObject.GetComponent<MeshRenderer>().material;
     }
 
     private void UpdateView()

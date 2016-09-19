@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7e35860406717c74f99748f5fffd6a40
-timeCreated: 1474279189
+timeCreated: 1474309551
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -377,7 +377,7 @@ SubstanceImporter:
         second: {r: 1, g: 1, b: 1, a: 1}
       - first:
           name: _EmissionColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.5661765, g: 0.5661765, b: 0.5661765, a: 1}
     textureParameters:
     - name: RootCloud_basecolor
       alphaSource: 6
