@@ -12,6 +12,9 @@ public class AwsInstanceView : MonoBehaviour
     public TextMesh name3dText;
     public Collider cloudCollider;
     public RotatingClouds cloudsRotator;
+    public GameObject buttonPlay;
+    public GameObject buttonStop;
+    public GameObject buttonTerminate;
 
     [Header("Input")]
     public float doubleClickInterval = .2f;
@@ -26,11 +29,13 @@ public class AwsInstanceView : MonoBehaviour
     }
     private Instance m_awsInstance;
 
+    private Material m_material;
     private float m_clicked = 0;
 
     void Awake()
     {
         if (!cloudsRotator) cloudsRotator = GetComponentInParent<RotatingClouds>();
+        if (cloudCollider) m_material = cloudCollider.gameObject.GetComponent<MeshRenderer>().sharedMaterial;
     }
 
     void Update()
@@ -66,17 +71,42 @@ public class AwsInstanceView : MonoBehaviour
         if (detailsText)
         {
             detailsText.text = string.Format(
-                "{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}"
-                , m_awsInstance.InstanceId        // 0
-                , m_awsInstance.KeyName           // 1
-                , m_awsInstance.InstanceType      // 2
-                , m_awsInstance.Monitoring.State  // 3
-                , m_awsInstance.State.Name        // 4
-                , m_awsInstance.PublicDnsName     // 5
-                , m_awsInstance.PublicIpAddress   // 6
-                , m_awsInstance.LaunchTime        // 7
-                , string.Join(",", m_awsInstance.SecurityGroups.ConvertAll(g => g.GroupName).ToArray()) // 8
+                "{0}\n{1}\n{2}\n{3}\n{4}\n{5}"
+                , m_awsInstance.InstanceType      // 0
+                , m_awsInstance.LaunchTime        // 1
+                , m_awsInstance.State.Name        // 2
+                , m_awsInstance.PublicDnsName     // 3
+                , m_awsInstance.PublicIpAddress   // 4
+                , string.Join(",", m_awsInstance.SecurityGroups.ConvertAll(g => g.GroupName).ToArray()) // 5
             );
+        }
+
+        // Ajusta elementos de acordo com o estado da instância.
+        bool buttonsSet = buttonPlay && buttonStop && buttonTerminate;
+        if (buttonsSet)
+        {
+            switch (m_awsInstance.State.Name)
+            {
+                case "running":
+                    m_material.color = Color.white;
+                    buttonPlay.SetActive(false);
+                    buttonStop.SetActive(true);
+                    buttonTerminate.SetActive(true);
+                    break;
+                case "stopped":
+                case "stopping":
+                    m_material.color = Color.red;
+                    buttonPlay.SetActive(true);
+                    buttonStop.SetActive(false);
+                    buttonTerminate.SetActive(true);
+                    break;
+                default:
+                    m_material.color = Color.gray;
+                    buttonPlay.SetActive(false);
+                    buttonStop.SetActive(false);
+                    buttonTerminate.SetActive(false);
+                    break;
+            }
         }
     }
 
