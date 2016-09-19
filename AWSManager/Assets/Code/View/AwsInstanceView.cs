@@ -30,7 +30,6 @@ public class AwsInstanceView : MonoBehaviour
     private Instance m_awsInstance;
 
     private Material m_material;
-    private float m_clicked = 0;
 
     void Awake()
     {
@@ -38,45 +37,20 @@ public class AwsInstanceView : MonoBehaviour
         if (cloudCollider) m_material = cloudCollider.gameObject.GetComponent<MeshRenderer>().sharedMaterial;
     }
 
-    void Update()
-    {
-        // Exibir os detalhes em caso de click duplo.
-        if (cloudCollider && Input.GetMouseButtonUp(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (cloudCollider.Raycast(ray, out hit, 1000f))
-            {
-                bool doubleClick = m_clicked > 0 && m_clicked + doubleClickInterval > Time.time;
-                Debug.Log(transform.rotation.eulerAngles.y);
-                if (doubleClick)
-                { // double click.
-                    m_clicked = 0;
-                    ShowDetails(true);
-                }
-                else
-                {
-                    m_clicked = Time.time;
-                }
-            } else
-            {
-                ShowDetails(false);
-            }
-        }
-    }
-
     private void UpdateView()
     {
         if (name3dText) name3dText.text = m_awsInstance.InstanceId;
         if (detailsText)
         {
+            string name = m_awsInstance.PublicDnsName;
+            if (name != null) name = name.Split('.')[0];
             detailsText.text = string.Format(
                 "{0}\n{1}\n{2}\n{3}\n{4}\n{5}"
-                , m_awsInstance.InstanceType      // 0
-                , m_awsInstance.LaunchTime        // 1
-                , m_awsInstance.State.Name        // 2
-                , m_awsInstance.PublicDnsName     // 3
-                , m_awsInstance.PublicIpAddress   // 4
+                , m_awsInstance.InstanceType                // 0
+                , m_awsInstance.LaunchTime                  // 1
+                , m_awsInstance.State.Name                  // 2
+                , name                                      // 3
+                , m_awsInstance.PublicIpAddress             // 4
                 , string.Join(",", m_awsInstance.SecurityGroups.ConvertAll(g => g.GroupName).ToArray()) // 5
             );
         }
@@ -108,15 +82,5 @@ public class AwsInstanceView : MonoBehaviour
                     break;
             }
         }
-    }
-
-    private void ShowDetails(bool value)
-    {
-        if (cloudsRotator)
-        {
-            float rotationDiff = 90 - transform.rotation.eulerAngles.y;
-            cloudsRotator.targetRotation = value ? rotationDiff : 0;
-        }
-        if (detailsPanel) detailsPanel.gameObject.SetActive(value);
     }
 }

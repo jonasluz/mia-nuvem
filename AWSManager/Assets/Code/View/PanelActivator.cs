@@ -6,26 +6,27 @@ public class PanelActivator : AbstractButtonSphere {
 
     public GameObject panel;
 
-    private bool cancelClosing = false;
+    private Animator m_animator;
+    private bool m_cancelClosing = false;
 
     public override void Execute()
     {
         if (panel)
         {
-            Animator animator = panel.GetComponent<Animator>();
-            if (!animator) animator = GetComponent<Animator>();
+            if (!m_animator) m_animator = panel.GetComponent<Animator>();
+            if (!m_animator) m_animator = GetComponent<Animator>();
 
             if (panel.activeSelf)
             {
-                cancelClosing = false;
-                if (animator) animator.SetTrigger("Hide");
-                StartCoroutine("WaitAnimationAndInactive", animator);
+                m_cancelClosing = false;
+                if (m_animator) m_animator.SetTrigger("Hide");
+                StartCoroutine("WaitAnimationAndInactive", m_animator);
             }
             else
             {
-                cancelClosing = true;
+                m_cancelClosing = true;
                 panel.SetActive(true);
-                if (animator) animator.SetTrigger("Show");
+                if (m_animator) m_animator.SetTrigger("Show");
             }
         }
     }
@@ -34,6 +35,6 @@ public class PanelActivator : AbstractButtonSphere {
     {
         float length = animtr.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(length);
-        if (!cancelClosing) panel.SetActive(false);
+        if (!m_cancelClosing && panel.activeSelf) panel.SetActive(false);
     }
 }
