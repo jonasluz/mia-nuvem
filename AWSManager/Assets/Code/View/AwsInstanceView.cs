@@ -45,13 +45,14 @@ public class AwsInstanceView : MonoBehaviour
             string name = m_awsInstance.PublicDnsName;
             if (name != null) name = name.Split('.')[0];
             detailsText.text = string.Format(
-                "{0}\n{1}\n{2}\n{3}\n{4}\n{5}"
+                "{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}"
                 , m_awsInstance.InstanceType                // 0
-                , m_awsInstance.LaunchTime                  // 1
-                , m_awsInstance.State.Name                  // 2
-                , name                                      // 3
-                , m_awsInstance.PublicIpAddress             // 4
-                , string.Join(",", m_awsInstance.SecurityGroups.ConvertAll(g => g.GroupName).ToArray()) // 5
+                , m_awsInstance.ImageId                     // 1
+                , m_awsInstance.LaunchTime                  // 2
+                , m_awsInstance.State.Name                  // 3
+                , name                                      // 4
+                , m_awsInstance.PublicIpAddress             // 5
+                , string.Join(",", m_awsInstance.SecurityGroups.ConvertAll(g => g.GroupName).ToArray()) // 6
             );
         }
 
