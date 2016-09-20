@@ -117,6 +117,7 @@
     <None Include="Assets\Asset Store\Allsky\AllSkyDemoEnvironment\Specular Snow Vertex Colours.shader" />
     <None Include="Assets\Asset Store\Allsky\allsky_readme.txt" />
     <None Include="Assets\Resources\credentials.txt" />
+    <None Include="Assets\Resources\credentials_c.txt" />
     <None Include="Assets\Resources\credentials_template.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
