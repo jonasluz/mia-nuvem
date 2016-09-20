@@ -15,23 +15,30 @@ public class AwsView : MonoBehaviour {
     /// </summary>
     public AwsInstanceView instanceViewPrefab;
 
+    public AmiView imageViewPrefab;
+
+    public Transform amiButtonsRoot;
+
     public float timeToUpdate = 1f;
 
-    private Dictionary<string, AwsInstanceView> m_dict = 
+    private Dictionary<string, AwsInstanceView> m_dictInstances = 
         new Dictionary<string, AwsInstanceView>();
+    private Dictionary<string, AmiView> m_dictImages = 
+        new Dictionary<string, AmiView>();
 
     #region Monobehaviour
     void Start()
     {
+        UpdateImages();
         UpdateInstances();
     }
     #endregion Monobehaviour
 
-    public void NewInstance()
+    public void NewInstance(string amiId)
     {
         try
         {
-            AwsManager.Aws.RunInstance();
+            AwsManager.Aws.RunInstance(amiId);
         }
         catch (Exception ex)
         {
@@ -83,6 +90,61 @@ public class AwsView : MonoBehaviour {
         WaitAndUpdate();
     }
 
+    public void UpdateImages()
+    {
+        IList<Image> images = null;
+        try
+        {
+            images = AwsManager.Aws.GetImages();
+        }
+        catch (Exception ex)
+        {
+            ErrorController.EC.ShowError(ex);
+        }
+        if (images == null || images.Count == 0) return;
+
+        // Elimina os game objects de imagens que não existem mais. 
+        IEnumerable<string> imagesIds = images.Select(i => i.ImageId);
+        foreach (string id in m_dictImages.Keys)
+            if (!imagesIds.Contains(id))
+            {
+                Destroy(m_dictImages[id].gameObject);
+                m_dictImages.Remove(id);
+            }
+
+        // Altura entre os botões.
+        float yDiff = 1.1f;
+
+        // Cria um botão para cada imagem.
+        if (imageViewPrefab)
+        {
+            float localY = 0;
+            foreach (Image ec2Image in images)
+            {
+                string id = ec2Image.ImageId;
+                AmiView imageView;
+                if (m_dictImages.Keys.Contains(id))
+                {
+                    imageView = m_dictImages[id];
+                }
+                else
+                {
+                    Transform parent = amiButtonsRoot ? amiButtonsRoot.transform : transform;
+                    imageView = Instantiate(imageViewPrefab, parent) as AmiView;
+                    m_dictImages.Add(id, imageView);
+                }
+                if (imageView)
+                {
+                    imageView.transform.localPosition = new Vector3(0, localY, 0);
+                    imageView.Ami = ec2Image;
+                }
+                localY += yDiff;
+                Debug.Log("Added Image " + id);
+            }
+        }
+
+    }
+
     /// <summary>
     /// Atualiza a visão das nuvens de instâncias.
     /// </summary>
@@ -102,11 +164,11 @@ public class AwsView : MonoBehaviour {
 
         // Elimina os game objects de instâncias que não existem mais. 
         IEnumerable<string> instancesIds = instances.Select(i => i.InstanceId);
-        foreach (string id in m_dict.Keys)
+        foreach (string id in m_dictInstances.Keys)
             if (!instancesIds.Contains(id))
             {
-                Destroy(m_dict[id].gameObject);
-                m_dict.Remove(id);
+                Destroy(m_dictInstances[id].gameObject);
+                m_dictInstances.Remove(id);
             }
         
         // Calcula o ângulo entre instâncias.
@@ -120,15 +182,15 @@ public class AwsView : MonoBehaviour {
             {
                 string id = ec2Instance.InstanceId;
                 AwsInstanceView instanceView;
-                if (m_dict.Keys.Contains(id))
+                if (m_dictInstances.Keys.Contains(id))
                 {
-                    instanceView = m_dict[id];
+                    instanceView = m_dictInstances[id];
                     instanceView.transform.rotation = Quaternion.identity;
                 }
                 else
                 {
                     instanceView = Instantiate(instanceViewPrefab, transform) as AwsInstanceView;
-                    m_dict.Add(id, instanceView);
+                    m_dictInstances.Add(id, instanceView);
                 }
                 if (instanceView)
                 {

@@ -85,7 +85,7 @@ public class AwsManager : MonoBehaviour {
         return result;
     }
 
-    public IDictionary<string, string> RunInstance()
+    public IDictionary<string, string> RunInstance(string amiId = null)
     {
         IDictionary<string, string> result = null;
 
@@ -93,11 +93,10 @@ public class AwsManager : MonoBehaviour {
         try
         {
             RunInstancesRequest runRequest = new RunInstancesRequest(AwsEnv.DEFAULT_AMI_ID, 1, 1);
-            runRequest.InstanceType = AwsEnv.DEFAULT_INST_TYPE;
+            runRequest.InstanceType = amiId == null ? AwsEnv.DEFAULT_INST_TYPE : amiId;
             runRequest.KeyName = AwsEnv.DEFAULT_KEY_NAME;
             runRequest.SecurityGroups.Add(AwsEnv.DEFAULT_SECURITY_GROUP);
 
-            Debug.Log(runRequest);
             RunInstancesResponse runResponse = Ec2.RunInstances(runRequest);
             result = runResponse.ResponseMetadata.Metadata;
             result.Add("STATUS_CODE", runResponse.HttpStatusCode.ToString());
