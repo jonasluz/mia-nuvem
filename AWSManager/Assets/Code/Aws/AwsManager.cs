@@ -92,8 +92,9 @@ public class AwsManager : MonoBehaviour {
         // Executa uma instância.
         try
         {
-            RunInstancesRequest runRequest = new RunInstancesRequest(AwsEnv.DEFAULT_AMI_ID, 1, 1);
-            runRequest.InstanceType = amiId == null ? AwsEnv.DEFAULT_INST_TYPE : amiId;
+            if (amiId == null) amiId = AwsEnv.DEFAULT_AMI_ID;
+            RunInstancesRequest runRequest = new RunInstancesRequest(amiId, 1, 1);
+            runRequest.InstanceType = AwsEnv.DEFAULT_INST_TYPE;
             runRequest.KeyName = AwsEnv.DEFAULT_KEY_NAME;
             runRequest.SecurityGroups.Add(AwsEnv.DEFAULT_SECURITY_GROUP);
 

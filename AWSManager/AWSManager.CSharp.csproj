@@ -88,6 +88,7 @@
     <Compile Include="Assets\Code\Tests\AwsTest.cs" />
     <Compile Include="Assets\Code\Util\MonoCertificateFix.cs" />
     <Compile Include="Assets\Code\View\AbstractButtonSphere.cs" />
+    <Compile Include="Assets\Code\View\AmiView.cs" />
     <Compile Include="Assets\Code\View\AwsInstanceView.cs" />
     <Compile Include="Assets\Code\View\AwsView.cs" />
     <Compile Include="Assets\Code\View\ButtonNewInstance.cs" />

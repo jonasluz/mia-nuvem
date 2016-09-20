@@ -122,6 +122,7 @@ public class AwsView : MonoBehaviour {
             foreach (Image ec2Image in images)
             {
                 string id = ec2Image.ImageId;
+                Debug.Log(id);
                 AmiView imageView;
                 if (m_dictImages.Keys.Contains(id))
                 {
@@ -139,7 +140,6 @@ public class AwsView : MonoBehaviour {
                     imageView.Ami = ec2Image;
                 }
                 localY += yDiff;
-                Debug.Log("Added Image " + id);
             }
         }
 

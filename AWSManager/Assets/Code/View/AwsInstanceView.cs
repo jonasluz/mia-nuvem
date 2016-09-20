@@ -76,7 +76,7 @@ public class AwsInstanceView : MonoBehaviour
                     buttonTerminate.SetActive(true);
                     break;
                 default:
-                    m_material.color = Color.gray;
+                    m_material.color = Color.blue;
                     buttonPlay.SetActive(false);
                     buttonStop.SetActive(false);
                     buttonTerminate.SetActive(false);
