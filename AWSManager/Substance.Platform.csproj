@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{7D8ECC96-9514-248D-5C00-516247D4AE44}</ProjectGuid>
+    <ProjectGuid>{04BD22BD-7CBC-E088-C81D-BC8C589FEF0D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Substance.Platform</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -56,37 +56,10 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Code\View\CameraBillboard.cs" />
-    <Compile Include="Assets\Code\View\CloudMaterialAnim.cs" />
-    <Compile Include="Assets\Code\View\AmiView.cs" />
-    <Compile Include="Assets\Code\View\AwsView.cs" />
-    <Compile Include="Assets\Code\View\ButtonNewInstance.cs" />
-    <Compile Include="Assets\Code\View\ButtonUpdateInstances.cs" />
-    <Compile Include="Assets\Code\View\ButtonStopInstance.cs" />
-    <Compile Include="Assets\Code\Util\MonoCertificateFix.cs" />
-    <Compile Include="Assets\Code\App\ErrorController.cs" />
-    <Compile Include="Assets\Code\View\AwsInstanceView.cs" />
-    <Compile Include="Assets\Code\View\RotatingClouds.cs" />
-    <Compile Include="Assets\Code\Aws\AwsManager.cs" />
-    <Compile Include="Assets\Code\Aws\AwsEnv.cs" />
-    <Compile Include="Assets\Code\View\ButtonStartInstance.cs" />
-    <Compile Include="Assets\Code\View\AbstractButtonSphere.cs" />
-    <Compile Include="Assets\Code\View\PanelActivator.cs" />
-    <Compile Include="Assets\Code\View\ButtonTerminateInstance.cs" />
-    <Compile Include="Assets\Code\Aws\AwsException.cs" />
-    <Compile Include="Assets\Code\Tests\AwsTest.cs" />
+    <Compile Include="Assets\Allegorithmic\Plugins\Substance.Platform\NativeFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Resources\credentials_c.txt" />
-    <None Include="Assets\AWSSDK-3.5\AWSSDK.Core.dll" />
-    <None Include="Assets\Allegorithmic\Plugins\Substance.Engine.dll" />
-    <None Include="Assets\Resources\credentials.txt" />
-    <None Include="Assets\Allegorithmic\Plugins\EULA.txt" />
-    <None Include="Assets\Allegorithmic\Plugins\Substance.Game.dll" />
-    <None Include="Assets\Resources\credentials_template.txt" />
-    <None Include="Assets\Allegorithmic\Plugins\substance_sse2_blend.dll" />
-    <None Include="Assets\Allegorithmic\Plugins\engine_build_info.txt" />
-    <None Include="Assets\AWSSDK-3.5\AWSSDK.EC2.dll" />
+    <None Include="Assets\Allegorithmic\Plugins\Substance.Platform\Substance.Platform.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -311,8 +284,41 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.OSXStandalone.Extensions">
+      <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\PlaybackEngines\MacStandaloneSupport\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.AppleTV.Extensions">
+      <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.AppleTV.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.LinuxStandalone.Extensions">
+      <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\PlaybackEngines\LinuxStandaloneSupport\UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
     <Reference Include="AWSSDK.Core">
       <HintPath>Assets\AWSSDK-3.5\AWSSDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.7.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.7.1\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
@@ -320,8 +326,17 @@
     <Reference Include="AWSSDK.EC2">
       <HintPath>Assets\AWSSDK-3.5\AWSSDK.EC2.dll</HintPath>
     </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.7.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Alg.Link">
+      <HintPath>Assets\Allegorithmic\Plugins\Substance\Substance Engine\Editor\SubstanceLink\Alg.Link.dll</HintPath>
+    </Reference>
     <Reference Include="Substance.Game">
       <HintPath>Assets\Allegorithmic\Plugins\Substance.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="Substance.Editor">
+      <HintPath>Assets\Allegorithmic\Plugins\Substance\Substance Engine\Editor\Substance.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -680,50 +695,14 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>D:\Programs\Unity\2020.3.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{EC972255-4D25-B1C9-C34D-B1E0444D9E5E}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
-    <ProjectReference Include="Substance.EditorHelper.csproj">
-      <Project>{49D6CEF8-D53C-6975-57DD-684B3BF8AF53}</Project>
-      <Name>Substance.EditorHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="Substance.Platform.csproj">
-      <Project>{04BD22BD-7CBC-E088-C81D-BC8C589FEF0D}</Project>
-      <Name>Substance.Platform</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
